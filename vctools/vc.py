@@ -120,7 +120,9 @@ class VCTools:
                                  stderr=subprocess.PIPE)
         stdout, stderr = popen.communicate()
         stdout_str = stdout.decode()
-        if popen.returncode != 0 or 'ERROR' in stdout_str.upper() or stderr:
+        if popen.returncode != 0 \
+           or 'Error in script usage.' in stdout_str \
+           or stderr:
             raise self.PlatformError('\n'.join([stdout_str,
                                                 stderr.decode()]))
 
